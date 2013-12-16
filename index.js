@@ -3,8 +3,16 @@ var newError = require("new-error");
 module.exports = define;
 
 function define (expectation) {
-  return function (input) {
+  sync.async = async;
+
+  return sync;
+
+  function sync (input) {
     return checkObject(input, expectation);
+  };
+
+  function async (input, callback) {
+    callback(sync(input));
   };
 }
 

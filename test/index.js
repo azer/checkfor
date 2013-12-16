@@ -32,3 +32,10 @@ it('fails if a field doesnt match requirements', function(){
   expect(validate(fixtures.invalidSummary2).message).to.equal('"summary" allows only following characters: "a-z", "0-9", ".", "-"');
 
 });
+
+it('can be called with callback interface, too', function(done){
+  validate.async(fixtures.invalidId, function (error) {
+    expect(error.message).to.equal('"id" is expected to be a number.');
+    done();
+  });
+});
