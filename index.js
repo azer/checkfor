@@ -3,24 +3,20 @@ var newError = require("new-error");
 module.exports = define;
 
 function define (expectation) {
-  sync.async = async;
-
-  return sync;
-
-  function sync (input) {
-    return checkObject(input, expectation);
-  };
-
-  function async (input, callback) {
-    callback(sync(input));
+  return function (input, ignore) {
+    return checkObject(input, expectation, ignore);
   };
 }
 
-function checkObject (content, reference) {
+function checkObject (content, reference, ignore) {
   if (!content) return newError('Empty content.');
 
   var name, error, options, value;
   for (name in reference) {
+    if (ignore && (ignore == name || ignore.indexOf(name) > -1)) {
+      continue;
+    }
+
     options = reference[name];
     value = content[name];
     !options.is && ( options = { is: options } );

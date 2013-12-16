@@ -55,6 +55,13 @@ exports.invalidEnabled = {
   enabled: 'yes'
 };
 
+exports.invalidContentAndEnabled = {
+  id: 123,
+  title: 'foobar',
+  content: {},
+  enabled: 'yes'
+};
+
 exports.invalidSummary1 = {
   id: 123,
   title: 'foobar',

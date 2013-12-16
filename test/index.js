@@ -38,9 +38,7 @@ it('fails if a field doesnt match requirements', function(){
   expect(validate(fixtures.invalidEmail4).message).to.equal('"azer@kodfabrik." is an invalid e-mail.');
 });
 
-it('can be called with callback interface, too', function(done){
-  validate.async(fixtures.invalidId, function (error) {
-    expect(error.message).to.equal('"id" is expected to be a number.');
-    done();
-  });
+it('optionally ignores specified fields', function(){
+  expect(validate(fixtures.invalidEmail1, 'email')).to.not.exist;
+  expect(validate(fixtures.invalidContentAndEnabled, ['content', 'enabled'])).to.not.exist;
 });
