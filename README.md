@@ -30,3 +30,5 @@ validate({ title: 'hello', content: 'Lorem ipsum' })
 validate({ title: '' })
 // => [Error "title" needs to be at least 2 characthers length.]
 ```
+
+See tests for more info.
