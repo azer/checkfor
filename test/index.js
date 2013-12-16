@@ -4,7 +4,7 @@ var fixtures = require("./fixtures");
 var validate = checkfor({
   id: { is: Number, required: true },
   title: { is: String, required: true, matches: /^[a-z0-9]+$/, len: [2, 20] },
-  summary: { is: String, allowed: ['a-z', '0-9', '.', '-'] },
+  summary: { is: String, allowed: ['a-z', '0-9', '.', '-'], len: [2] },
   content: String,
   enabled: Boolean,
   email: { is: String, email: true }
@@ -31,6 +31,7 @@ it('fails if a field doesnt match requirements', function(){
   expect(validate(fixtures.invalidEnabled).message).to.equal('"enabled" is expected to be a boolean.');
   expect(validate(fixtures.invalidSummary1).message).to.equal('"summary" allows only following characters: "a-z", "0-9", ".", "-"');
   expect(validate(fixtures.invalidSummary2).message).to.equal('"summary" allows only following characters: "a-z", "0-9", ".", "-"');
+  expect(validate(fixtures.invalidSummary3).message).to.equal('"summary" has to be at least 2 characters long.');
   expect(validate(fixtures.invalidEmail1).message).to.equal('"azer@" is an invalid e-mail.');
   expect(validate(fixtures.invalidEmail2).message).to.equal('"@azer" is an invalid e-mail.');
   expect(validate(fixtures.invalidEmail3).message).to.equal('"azer@kodfabrik" is an invalid e-mail.');

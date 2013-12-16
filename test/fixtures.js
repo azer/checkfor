@@ -64,7 +64,13 @@ exports.invalidSummary1 = {
 exports.invalidSummary2 = {
   id: 123,
   title: 'foobar',
-  summary: '$'
+  summary: 'ab$dc'
+};
+
+exports.invalidSummary3 = {
+  id: 123,
+  title: 'foobar',
+  summary: 'a'
 };
 
 exports.invalidEmail1 = {
