@@ -1,6 +1,6 @@
 {
   "name": "checkfor",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Validate objects with meaningful errors",
   "main": "index.js",
   "scripts": {
