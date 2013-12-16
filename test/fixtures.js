@@ -2,18 +2,21 @@ exports.valid1 = {
   id: 123,
   title: 'foobar',
   content: '',
-  enabled: true
+  enabled: true,
+  email: 'foo@bar.com'
 };
 
 exports.valid2 = {
   id: 123,
-  title: 'foobar'
+  title: 'foobar',
+  email: 'f.oo@ba-r.co.uk'
 };
 
 exports.valid3 = {
   id: 123,
   title: 'foobar',
-  summary: 'foobar123.-'
+  summary: 'foobar123.-',
+  email: 'a_z-er+sp-an@e-g_gs123.mobi.tr'
 };
 
 exports.invalidId = {
@@ -62,4 +65,28 @@ exports.invalidSummary2 = {
   id: 123,
   title: 'foobar',
   summary: '$'
+};
+
+exports.invalidEmail1 = {
+  id: 1,
+  title: 'hello',
+  email: 'azer@'
+};
+
+exports.invalidEmail2 = {
+  id: 1,
+  title: 'hello',
+  email: '@azer'
+};
+
+exports.invalidEmail3 = {
+  id: 1,
+  title: 'hello',
+  email: 'azer@kodfabrik'
+};
+
+exports.invalidEmail4 = {
+  id: 1,
+  title: 'hello',
+  email: 'azer@kodfabrik.'
 };

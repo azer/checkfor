@@ -39,6 +39,10 @@ function check (value, name, options, parent) {
     return newError('"{0}" is expected to be a {1}.', name, typeName(options.is));
   }
 
+  if (options.email && !/^[\w\.\+\-_]+@[\w\-_]+\.[\w\.]{2,10}$/.test(value)) {
+    return newError('"{0}" is an invalid e-mail.', value);
+  }
+
   if (options.allowed) {
     options.matches || (options.matches = new RegExp("^[" + options.allowed.join("") + "]*$"));
   }

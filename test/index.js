@@ -6,7 +6,8 @@ var validate = checkfor({
   title: { is: String, required: true, matches: /^[a-z0-9]+$/, len: [2, 20] },
   summary: { is: String, allowed: ['a-z', '0-9', '.', '-'] },
   content: String,
-  enabled: Boolean
+  enabled: Boolean,
+  email: { is: String, email: true }
 });
 
 it('does nothing if given object is valid', function(){
@@ -30,7 +31,10 @@ it('fails if a field doesnt match requirements', function(){
   expect(validate(fixtures.invalidEnabled).message).to.equal('"enabled" is expected to be a boolean.');
   expect(validate(fixtures.invalidSummary1).message).to.equal('"summary" allows only following characters: "a-z", "0-9", ".", "-"');
   expect(validate(fixtures.invalidSummary2).message).to.equal('"summary" allows only following characters: "a-z", "0-9", ".", "-"');
-
+  expect(validate(fixtures.invalidEmail1).message).to.equal('"azer@" is an invalid e-mail.');
+  expect(validate(fixtures.invalidEmail2).message).to.equal('"@azer" is an invalid e-mail.');
+  expect(validate(fixtures.invalidEmail3).message).to.equal('"azer@kodfabrik" is an invalid e-mail.');
+  expect(validate(fixtures.invalidEmail4).message).to.equal('"azer@kodfabrik." is an invalid e-mail.');
 });
 
 it('can be called with callback interface, too', function(done){
