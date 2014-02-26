@@ -7,7 +7,8 @@ var validate = checkfor({
   summary: { is: String, allowed: ['a-z', '0-9', '.', '-'], len: [2] },
   content: String,
   enabled: Boolean,
-  email: { is: String, email: true }
+  email: { is: String, email: true },
+  age: { is: Number, lower: 26, higher: 17 }
 });
 
 it('does nothing if given object is valid', function(){
@@ -36,6 +37,9 @@ it('fails if a field doesnt match requirements', function(){
   expect(validate(fixtures.invalidEmail2).message).to.equal('"@azer" is an invalid e-mail.');
   expect(validate(fixtures.invalidEmail3).message).to.equal('"azer@kodfabrik" is an invalid e-mail.');
   expect(validate(fixtures.invalidEmail4).message).to.equal('"azer@kodfabrik." is an invalid e-mail.');
+  expect(validate(fixtures.invalidAge1).message).to.equal('"17" has to be higher than 17.');
+  expect(validate(fixtures.invalidAge2).message).to.equal('"26" has to be lower than 26.');
+  expect(validate(fixtures.invalidAge3).message).to.equal('"126" has to be lower than 26.');
 });
 
 it('optionally ignores specified fields', function(){

@@ -74,3 +74,25 @@ Fails if the input is not longer/shorter than expected:
 ```js
 { is: String, len: [3, 24] }
 ```
+
+### lower
+
+Fails if the input is higher than expected:
+
+```js
+{ is: Number, lower: 100 }
+```
+
+* 99 will pass.
+* 100+ will fail.
+
+## higher
+
+Fails if the input is lower than expected:
+
+```js
+{ is: Number, higher: 0 }
+```
+
+* 1 will pass.
+* 0 and lower numbers will fail.

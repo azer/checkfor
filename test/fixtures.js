@@ -9,14 +9,16 @@ exports.valid1 = {
 exports.valid2 = {
   id: 123,
   title: 'foobar',
-  email: 'f.oo@ba-r.co.uk'
+  email: 'f.oo@ba-r.co.uk',
+  age: 25
 };
 
 exports.valid3 = {
   id: 123,
   title: 'foobar',
   summary: 'foobar123.-',
-  email: 'a_z-er+sp-an@e-g_gs123.mobi.tr'
+  email: 'a_z-er+sp-an@e-g_gs123.mobi.tr',
+  age: 18
 };
 
 exports.invalidId = {
@@ -102,4 +104,22 @@ exports.invalidEmail4 = {
   id: 1,
   title: 'hello',
   email: 'azer@kodfabrik.'
+};
+
+exports.invalidAge1 = {
+  id: 1,
+  title: 'hello',
+  age: 17
+};
+
+exports.invalidAge2 = {
+  id: 1,
+  title: 'hello',
+  age: 26
+};
+
+exports.invalidAge3 = {
+  id: 1,
+  title: 'hello',
+  age: 126
 };
